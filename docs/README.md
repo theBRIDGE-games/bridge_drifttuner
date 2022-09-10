@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `bridge_drifttuner` (
 
 bridge_drifttuner:TuneStatus
 
-
+# Original Author Credit - Moravian Lion
 Credit goes to Moravian Lion for the original script and idea 
 responsible for modifying handling.  This is an adaptation of
 that idea adding database support, storing the drift mod to the
