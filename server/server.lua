@@ -37,7 +37,7 @@ RegisterNetEvent('bridge_drifttuner:chipAdd', function(plate)
     end
 end)
 
-RegisterServerEvent('bridge_drifttuner:chipRemove', function(plate)
+RegisterNetEvent('bridge_drifttuner:chipRemove', function(plate)
     isChiped[plate] = nil
     MySQL.query("DELETE FROM bridge_drifttuner WHERE plate=@plate", {
         ['@plate'] = plate,
