@@ -25,8 +25,7 @@ QBCore.Functions.CreateUseableItem(config.chipItem, function(source, item)
     TriggerClientEvent('bridge_drifttuner:chipAddClient', source)
 end)
 
-RegisterServerEvent('bridge_drifttuner:chipAdd')
-AddEventHandler('bridge_drifttuner:chipAdd', function(plate)
+RegisterNetEvent('bridge_drifttuner:chipAdd', function(plate)
     local src = source
     local PlayerPed = QBCore.Functions.GetPlayer(src)
     if PlayerPed then
@@ -38,8 +37,7 @@ AddEventHandler('bridge_drifttuner:chipAdd', function(plate)
     end
 end)
 
-RegisterServerEvent('bridge_drifttuner:chipRemove')
-AddEventHandler('bridge_drifttuner:chipRemove', function(plate)
+RegisterServerEvent('bridge_drifttuner:chipRemove', function(plate)
     isChiped[plate] = nil
     MySQL.query("DELETE FROM bridge_drifttuner WHERE plate=@plate", {
         ['@plate'] = plate,
