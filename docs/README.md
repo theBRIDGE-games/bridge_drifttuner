@@ -24,10 +24,10 @@ CREATE TABLE IF NOT EXISTS `bridge_drifttuner` (
 bridge_drifttuner:TuneStatus
 
 
-<!-- Credit goes to Moravian Lion for the original script and idea 
+Credit goes to Moravian Lion for the original script and idea 
 responsible for modifying handling.  This is an adaptation of
 that idea adding database support, storing the drift mod to the
 vehicle plate, functions to toggle drift mode on/off, and
-functions for police to check for turbo/drift modifications. -->
+functions for police to check for turbo/drift modifications.
 
 https://github.com/MoravianLion/Drift-Script 
