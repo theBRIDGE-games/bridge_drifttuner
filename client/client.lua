@@ -69,8 +69,7 @@ end)
 --############################################################################################################################################################################
 
 -- Add tuner chip
-RegisterNetEvent("bridge_drifttuner:chipAddClient")
-AddEventHandler("bridge_drifttuner:chipAddClient", function()
+RegisterNetEvent("bridge_drifttuner:chipAddClient", function()
 	if inVehicle then
         driftalerts("You cannot do this in the vehicle!", 'error')
 		return
