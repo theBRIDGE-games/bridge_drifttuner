@@ -90,23 +90,20 @@ RegisterNetEvent("bridge_drifttuner:chipAddClient", function()
                 TriggerServerEvent("bridge_drifttuner:chipAdd", GetVehicleNumberPlateText(vehicle))
                 SetVehicleDoorOpen(vehicle, 4, 0, 0)
                 TaskStartScenarioInPlace(playerPed, "PROP_HUMAN_BUM_BIN", 0, true)
-
-                QBCore.Functions.Progressbar("tunerchip", "Installing Drift Tuning Chip", config.chipInstallTime, false, true, {
+                QBCore.Functions.Progressbar("drifttuner", "Installing Drift Tuning Chip", config.chipInstallTime, false, true, {
                     disableMovement = true,
                     disableCarMovement = true,
                     disableMouse = false,
                     disableCombat = true,
                 }, {}, {}, {}, function() -- Done
-                Citizen.Wait(2000)
-                driftalerts("Drift Tuning Chip Installed", 'success')
-                ClearPedTasksImmediately(playerPed)
-                SetVehicleDoorShut(vehicle, 4, 0)
-                
-            end, function() -- Cancelled
-                TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-            end, "drifttuner")
-
-        end
+                    Wait(2000)
+                    driftalerts("Drift Tuning Chip Installed", 'success')
+                    ClearPedTasksImmediately(playerPed)
+                    SetVehicleDoorShut(vehicle, 4, 0)
+                end, function() -- Cancelled
+                    TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+                end, "drifttuner")
+            end
         else
             driftalerts("You are too far from engine!", 'error')
         end
@@ -131,17 +128,17 @@ function ToggleDrift(vehicle)
         disableMouse = false,
         disableCombat = true,
     }, {}, {}, {}, function() -- Done    
-    for index, value in ipairs(handleMods) do
-        SetVehicleHandlingFloat(vehicle, "CHandlingData", value[1], GetVehicleHandlingFloat(vehicle, "CHandlingData", value[1]) + value[2] * modifier)
-        InProgress = false
-    end   
-    if driftMode then       
-        -- PrintDebugInfo("stock")
-        driftalerts("TCS, ABS, ESP is on!  Drift Mode DISABLED", 'success')
-    else        
-        -- PrintDebugInfo("drift")
-        driftalerts("TCS, ABS, ESP is OFF! Drift Mode ENABLED", 'success')
-    end
+        for index, value in ipairs(handleMods) do
+            SetVehicleHandlingFloat(vehicle, "CHandlingData", value[1], GetVehicleHandlingFloat(vehicle, "CHandlingData", value[1]) + value[2] * modifier)
+            InProgress = false
+        end   
+        if driftMode then       
+            -- PrintDebugInfo("stock")
+            driftalerts("TCS, ABS, ESP is on!  Drift Mode DISABLED", 'success')
+        else        
+            -- PrintDebugInfo("drift")
+            driftalerts("TCS, ABS, ESP is OFF! Drift Mode ENABLED", 'success')
+        end
     end, function()
         InProgress = false
         driftalerts("Cancelled drift mode change.", 'error')
